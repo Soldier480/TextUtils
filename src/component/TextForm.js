@@ -6,29 +6,33 @@ export default function TextForm(props) {
     console.log('Uppercase was clicked')
     let newText=text.toUpperCase()
     setText(newText)
-    }
-    const handleOnChange=(event)=>{
-        console.log('on change')
-        setText(event.target.value)
-    }
-    const handleloClick=()=>{
-      let newText=text.toLowerCase()
-      setText(newText)
-    }
-    const cleartext=()=>{
-      let newText=''
-      setText(newText)  
-    }
-    const downloadfile=()=>{
-      var content = text;
-      // any kind of extension (.txt,.cpp,.cs,.bat)
-      var filename = "hello.txt";
-      
-      var blob = new Blob([content], {
-       type: "text/plain;charset=utf-8"
-      });
-      
-      saveAs(blob, filename);
+    props.showalert("Converted to uppercase ","success");
+  }
+  const handleOnChange=(event)=>{
+    console.log('on change')
+    setText(event.target.value)
+  }
+  const handleloClick=()=>{
+    let newText=text.toLowerCase()
+    setText(newText)
+    props.showalert("Converted to lowercase ","success")
+  }
+  const cleartext=()=>{
+    let newText=''
+    setText(newText)  
+    props.showalert("Cleared text ","success")
+  }
+  const downloadfile=()=>{
+    var content = text;
+    // any kind of extension (.txt,.cpp,.cs,.bat)
+    var filename = "hello.txt";
+    
+    var blob = new Blob([content], {
+      type: "text/plain;charset=utf-8"
+    });
+    
+    saveAs(blob, filename);
+    props.showalert("downloading text file","success")
     }
     const [text,setText]=useState('enter the text here')
   return (
