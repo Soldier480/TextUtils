@@ -1,16 +1,13 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import React,{ useState } from 'react';
 import Navbar from './component/Navbar';
 import TextForm from './component/TextForm';
-import Aboutus from './component/Aboutus';
+// import About from './component/About';
 import Alert from './component/Alert';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-  } from "react-router-dom" ;
+// import {
+//   BrowserRouter as Router,
+// } from "react-router-dom";
 function App() {
   const [mode,setmode]=useState('light')
   const [alert,setalert]=useState(null)
@@ -38,20 +35,22 @@ function App() {
   };
   return (
     <>
-  <Navbar title="TextUtils"  aboutText="Aboutus" mode={mode} togglemode={togglemode}/>
+    {/* <Router> */}
+  <Navbar title="TextUtils"  aboutText="About" mode={mode} togglemode={togglemode}/>
   <Alert alert={alert}/>
-  <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-  <TextForm showalert={showalert}  heading="Enter the text to analyze" mode={mode}/>
+  <div className="container my-3"> 
+  {/* <Routes> */}
+    {/* Routes used instead of switch */}
+          {/* <Route path="/about" element={<About/>}>
+          </Route> */}
+          {/* <Route path="/" element={<TextForm showalert={showalert}  heading="Enter the text to analyze" mode={mode}/>}>   
+          </Route> */}
+          {/* <Route path="/" element= */}
+          <TextForm Home="Home" showalert={showalert}  heading="Enter the text to analyze" mode={mode}/>  
+          {/* </Route>
+        </Routes> */}
+        </div>
+        {/* </Router> */}
   </>
   );
 }
